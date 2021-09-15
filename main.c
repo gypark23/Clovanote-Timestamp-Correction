@@ -15,15 +15,15 @@ void modifyTimeStamp(char *line, char *str, int index)
 
    else
    {
-      char before[255];
-      char after[255];
+      char before[MAX_LETTERS_PER_WORD];
+      char after[MAX_LETTERS_PER_WORD];
       char modified[20];
       memset(before, '\0', sizeof(before));
       memset(after, '\0', sizeof(after));
       memset(modified, '\0', sizeof(modified));
 
       strncpy(before, line, index - 2);
-      strncpy(after, line + (index - 2), 255 - (index - 2));
+      strncpy(after, line + (index - 2), MAX_LETTERS_PER_WORD - (index - 2));
 
       if (strlen(after) < 7)
       {
