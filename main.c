@@ -25,7 +25,8 @@ void modifyTimeStamp(char *line, char *str, int index)
       strncpy(before, line, index - 2);
       strncpy(after, line + (index - 2), MAX_LETTERS_PER_WORD - (index - 2));
 
-      if (strlen(after) < 7)
+      printf("%d", strlen(after));
+      if (strlen(after) <= 7)
       {
          strcpy(modified, "00:");
          strcat(modified, after);
