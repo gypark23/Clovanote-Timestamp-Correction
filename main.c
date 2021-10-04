@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 const int MAX_CHAR_LENGTH = 1000000;
 const int MAX_WORDS = 500000;
@@ -54,6 +55,19 @@ int firstCollonIndex(char *str)
    return index;
 }
 
+char *remove_ext(char* myStr)
+{
+    char *retStr;
+    char *lastExt;
+    if (myStr == NULL) return NULL;
+    if ((retStr = malloc (strlen (myStr) + 1)) == NULL) return NULL;
+    strcpy (retStr, myStr);
+    lastExt = strrchr (retStr, '.');
+    if (lastExt != NULL)
+        *lastExt = '\0';
+    return retStr;
+}
+
 int main()
 {
    char str[MAX_CHAR_LENGTH];
@@ -82,10 +96,11 @@ int main()
    }
 
    FILE *out;
-   out = fopen(strcat(fileName, "_modified"), "w+");
+   out = fopen(strcat(remove_ext(fileName), "_modified.txt"), "w+");
    fputs(str, out);
 
    fclose(out);
    fclose(file);
    return 0;
 }
+
